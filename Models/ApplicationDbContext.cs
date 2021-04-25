@@ -8,13 +8,25 @@ namespace Vidly.Models
 {
     public class ApplicationDbContext : DbContext
     {
-        //constructor
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+
+        public ApplicationDbContext()
         {
 
         }
 
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(@"server=(LocalDb)\MSSQLLocalDb; Database=Movie; Trusted_Connection=True; MultipleActiveResultSets=True");
+
+            }
+        }
+
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Customer> Customers { get; set; }
+
+
     }
 }

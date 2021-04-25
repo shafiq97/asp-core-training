@@ -9,32 +9,33 @@ namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
+
+        private ApplicationDbContext _context;
+
+        public CustomersController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         public IActionResult Index()
         {
 
-            var customers = new List<Customer>
-            {
-                new Customer{Name="John Smith", Id = 1},
-                new Customer{Name="Mary Williams", Id = 2}
-
-            };
+            var customers = _context.Customers.ToList();
+            
              
             return View(customers);
         }
 
         public IActionResult Details(int id)
         {
-            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
             return View(customer);
         }
 
-        private IEnumerable<Customer> GetCustomers()
-        {
-            return new List<Customer>
-            {
-                new Customer {Id=1, Name="John Smith"},
-                new Customer {Id=2, Name="Marry William"}
-            };
-        }
     }
 }

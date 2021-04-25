@@ -13,6 +13,8 @@
 <ul>
     @foreach (var customers in Model)
     {
-        <li href="@Url.Action("Details","Customers", new {id = customers.Id })">@customers.Name</li>
+        <li>
+            <a href="@Url.Action("Details","Customers", new {id = customers.Id })">@customers.Name</a>
+        </li> 
     }
 </ul>
