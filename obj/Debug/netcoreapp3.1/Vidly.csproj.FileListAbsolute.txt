@@ -385,3 +385,4 @@ D:\Vidly\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClien
 D:\Vidly\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\Vidly\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Vidly\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Vidly\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Details.cshtml.g.cs

@@ -1,5 +1,4 @@
 ﻿@model List<Vidly.Models.Movie>
-
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -8,9 +7,26 @@
 
 <h2>Movies</h2>
 
-<ul>
+<table class="table">
+<thead>
+    <tr>
+        <th>Movies</th>
+        <th>Genre</th>
+    </tr>
+</thead>
+<tbody>
     @foreach (var movies in Model)
     {
-        <li>@movies.Name</li>
+        <tr>
+            <td>
+                <a href="@Url.Action("Details","Movies", new {id = movies.Id })">
+                    <div>
+                        @movies.Name
+                    </div>
+                </a>
+            </td>
+            <td>@movies.Genre.Name</td>
+        </tr>
     }
-</ul>
+</tbody>
+</table>

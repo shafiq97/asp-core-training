@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Vidly.Controllers
         public IActionResult Index()
         {
 
-            var customers = _context.Customers.ToList();
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             
              
             return View(customers);
@@ -33,7 +34,7 @@ namespace Vidly.Controllers
 
         public IActionResult Details(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
             return View(customer);
         }
 

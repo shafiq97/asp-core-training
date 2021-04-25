@@ -10,11 +10,26 @@
 {
     <h3>We don't have any customer yet</h3>
 }
-<ul>
-    @foreach (var customers in Model)
-    {
-        <li>
-            <a href="@Url.Action("Details","Customers", new {id = customers.Id })">@customers.Name</a>
-        </li> 
-    }
-</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Membership Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customers in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Details","Customers", new {id = customers.Id })">
+                        <div>
+                            @customers.Name
+                        </div>
+                    </a>   
+                </td>
+                <td>@customers.MembershipType.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
