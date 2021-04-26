@@ -386,3 +386,7 @@ D:\Vidly\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClien
 D:\Vidly\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Vidly\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Vidly\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Details.cshtml.g.cs
+D:\Vidly\obj\Debug\netcoreapp3.1\Razor\Views\Customers\CustomerForm.cshtml.g.cs
+D:\Vidly\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+D:\Vidly\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+D:\Vidly\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

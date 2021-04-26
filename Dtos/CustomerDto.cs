@@ -4,24 +4,20 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Vidly.Models
+namespace Vidly.Dtos
 {
-    public class Customer
+    public class CustomerDto
     {
         public int Id { get; set; }
-        
+
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
 
-        [Display(Name = "Date of birth")]
         public string BirthDate { get; set; }
 
         public bool isSubscribeToNewsLetter { get; set; }
 
-        public MembershipType MembershipType { get; set; }
-
-        [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
     }
 }
