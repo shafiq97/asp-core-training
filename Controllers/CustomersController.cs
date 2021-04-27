@@ -51,6 +51,7 @@ namespace Vidly.Controllers
 
         public IActionResult Edit(int id)
         {
+            ViewData["H2"] = "Edit Customer";
 
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
@@ -74,6 +75,9 @@ namespace Vidly.Controllers
 
         public IActionResult New()
         {
+
+            ViewData["H2"] = "New Customer";
+            
             var membershipTypes = _context.MembershipType.ToList();
 
             var viewModel = new NewCustomerViewModel
