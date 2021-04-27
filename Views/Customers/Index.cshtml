@@ -1,14 +1,18 @@
 ﻿@model IEnumerable<Vidly.Models.Customer>
-
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
-<h2>Customers</h2>
+<h2>Customers List</h2>
+
+<input class="btn btn-primary mb-3" 
+       type="button" 
+       value="New Customer" 
+       onclick="location.href='@Url.Action("New", "Customers")'" />
 
 <table id="customers" class="table">
-    <thead>
+    <thead class="thead-dark">
         <tr>
             <th>Customer</th>
             <th>Membership Type</th>
@@ -16,13 +20,17 @@
         </tr>
     </thead>
     <tbody>
-        
     </tbody>
 </table>
 
+
+@*
+    Generate datatable from api    
+*@
 @section scripts
-{ 
+{
     <script>
+
         $(document).ready(function () {
 
             var table = $("#customers").DataTable({
@@ -49,11 +57,9 @@
                         }
                     }
                 ]
-
-
             });
 
-            $("#customers").on("click", ".js-delete",function () {
+            $("#customers").on("click", ".js-delete", function () {
                 var button = $(this);
                 bootbox.confirm("Delete this customer ?", function (result) {
                     if (result) {

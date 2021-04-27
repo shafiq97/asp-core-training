@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Vidly.Models;
 using Vidly.ViewModel;
@@ -29,7 +30,25 @@ namespace Vidly.Controllers
         [HttpPost]
         public IActionResult Create(Customer customer)
         {
-            if(customer.Id == 0)
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44318/customers/new");
+
+                //HTTP POST
+                var postTask = client.PostAsJsonAsync<Customer>("https://localhost:44318/api/customers/", customer);
+                postTask.Wait();
+
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                return Content("something went wrong");
+            }
+            /*
+            if (customer.Id == 0)
             {
                 _context.Customers.Add(customer);
             }
@@ -46,7 +65,7 @@ namespace Vidly.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Customers");
+            return RedirectToAction("Index", "Customers");*/
         }
 
         public IActionResult Edit(int id)
