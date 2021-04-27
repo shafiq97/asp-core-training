@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Vidly.Dtos;
@@ -24,7 +25,9 @@ namespace Vidly.Controllers.Api
         // GET  /api/customers
         public IEnumerable<Customer> GetCustomers()
         {
-            var result = _context.Customers.ToList();
+            var result = _context.Customers
+                .Include(c => c.MembershipType)
+                .ToList();
             return result;
             
         }

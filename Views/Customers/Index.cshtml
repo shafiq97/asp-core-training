@@ -6,10 +6,6 @@
 @{
 }
 <h2>Customers</h2>
-@if(Model.Count() == 0)
-{
-    <h3>We don't have any customer yet</h3>
-}
 <table id="customers" class="table">
     <thead>
         <tr>
@@ -19,22 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var customers in Model)
-        {
-            <tr>
-                <td>
-                    <a href="@Url.Action("Edit","Customers", new {id = customers.Id })">
-                        <div>
-                            @customers.Name
-                        </div>
-                    </a>   
-                </td>
-                <td>@customers.MembershipType.Name</td>
-                <td>
-                    <button data-customer-id="@customers.Id" class="btn btn-link js-delete">Delete</button>
-                </td>
-            </tr>
-        }
+        
     </tbody>
 </table>
 
@@ -42,6 +23,35 @@
 { 
     <script>
         $(document).ready(function () {
+
+            var table = $("#customers").DataTable({
+
+                ajax: {
+                    url: "/api/customers",
+                    dataSrc: ""
+                },
+
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, customer) {
+                            return "<a href='/customers/edit/" + customer.id + "'>" + customer.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "membershipType.name"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class = 'btn btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+
+
+            });
+
             $("#customers").on("click", ".js-delete",function () {
                 var button = $(this);
                 bootbox.confirm("Delete this customer ?", function (result) {
@@ -50,7 +60,7 @@
                             url: "/api/customers/" + button.attr("data-customer-id"),
                             method: "DELETE",
                             success: function () {
-                                button.parents("tr").remove();
+                                table.row(button.parents("tr")).remove().draw();
                             }
                         })
                     }
