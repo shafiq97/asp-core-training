@@ -393,3 +393,4 @@ D:\Vidly\obj\Debug\netcoreapp3.1\Vidly.dll
 D:\Vidly\obj\Debug\netcoreapp3.1\Vidly.pdb
 D:\Vidly\obj\Debug\netcoreapp3.1\Vidly.genruntimeconfig.cache
 D:\Vidly\obj\Debug\netcoreapp3.1\Vidly.csprojAssemblyReference.cache
+D:\Vidly\obj\Debug\netcoreapp3.1\Razor\Views\Customers\UpdateCustomerForm.cshtml.g.cs

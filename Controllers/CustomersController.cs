@@ -30,42 +30,38 @@ namespace Vidly.Controllers
         [HttpPost]
         public IActionResult Create(Customer customer)
         {
-
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://localhost:44318/customers/new");
-
-                //HTTP POST
-                var postTask = client.PostAsJsonAsync<Customer>("https://localhost:44318/api/customers/", customer);
-                postTask.Wait();
-
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("Index");
-                }
-
-                return Content("something went wrong");
-            }
-            /*
             if (customer.Id == 0)
             {
-                _context.Customers.Add(customer);
+                //_context.Customers.Add(customer);
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44318/customers/new");
+
+                    //HTTP POST
+                    var postTask = client.PostAsJsonAsync<Customer>("https://localhost:44318/api/customers/", customer);
+                    postTask.Wait();
+
+                    var result = postTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
+
+                    return Content("something went wrong");
+                }
             }
             else
             {
                 var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
-
                 customerInDb.Name = customer.Name;
                 customerInDb.BirthDate = customer.BirthDate;
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
                 customerInDb.isSubscribeToNewsLetter = customer.isSubscribeToNewsLetter;
-
             }
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Customers");*/
+            return RedirectToAction("Index", "Customers");
         }
 
         public IActionResult Edit(int id)
@@ -86,7 +82,7 @@ namespace Vidly.Controllers
                     MembershipTypes = _context.MembershipType.ToList()
                 };
 
-                return View("CustomerForm", viewModel);
+                return View("UpdateCustomerForm", viewModel);
             }
 
             
