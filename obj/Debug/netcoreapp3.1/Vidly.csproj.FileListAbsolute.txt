@@ -390,3 +390,5 @@ D:\Vidly\obj\Debug\netcoreapp3.1\Razor\Views\Customers\CustomerForm.cshtml.g.cs
 D:\Vidly\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 D:\Vidly\bin\Debug\netcoreapp3.1\System.Web.Http.dll
 D:\Vidly\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\Vidly\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\Vidly\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

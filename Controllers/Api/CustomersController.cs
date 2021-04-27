@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Vidly.Dtos;
 using Vidly.Models;
 
 namespace Vidly.Controllers.Api
@@ -22,7 +24,9 @@ namespace Vidly.Controllers.Api
         // GET  /api/customers
         public IEnumerable<Customer> GetCustomers()
         {
-            return _context.Customers.ToList();
+            var result = _context.Customers.ToList();
+            return result;
+            
         }
 
         // GET /api/customers/1
@@ -56,7 +60,7 @@ namespace Vidly.Controllers.Api
         }
 
         // PUT /api/customers/1
-        [HttpPut]
+        [HttpPut("/api/customers/{id}")]
         public void UpdateCustomer(int id, Customer customer)
         {
             if (!ModelState.IsValid)
@@ -77,10 +81,10 @@ namespace Vidly.Controllers.Api
             customerInDb.MembershipTypeId = customer.MembershipTypeId;
 
             _context.SaveChanges();
-
         }
 
-        [HttpDelete]
+        // DELETE /api/customers/1
+        [HttpDelete("/api/customers/{id}")]
         public void DeleteCustomer(int id)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);

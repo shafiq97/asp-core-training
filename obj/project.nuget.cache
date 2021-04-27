@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "saY1R2EBYEtXXpAJFBZc/4Qbg0t9aC1NwUy+BMBMjchgwCijBwEdXEbnMjCUgFDNwZBYvs6uf0nF5KtGn0xQ2A==",
+  "dgSpecHash": "IAZsSJlDmxZOZjRgTEHOvSRf+thi1uWT8qFEY2wES0B3Fyr+11tA7gh9EyVfHeEoifJEyumFDpUhX7S+ZsRMkw==",
   "success": true,
   "projectFilePath": "D:\\Vidly\\Vidly.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MuhammadShafiqbinAhm\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\MuhammadShafiqbinAhm\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\MuhammadShafiqbinAhm\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\MuhammadShafiqbinAhm\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\MuhammadShafiqbinAhm\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.7\\microsoft.aspnet.webapi.core.5.2.7.nupkg.sha512",
