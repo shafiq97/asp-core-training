@@ -10,11 +10,12 @@
 {
     <h3>We don't have any customer yet</h3>
 }
-<table class="table">
+<table id="customers" class="table">
     <thead>
         <tr>
             <th>Customer</th>
             <th>Membership Type</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +30,32 @@
                     </a>   
                 </td>
                 <td>@customers.MembershipType.Name</td>
+                <td>
+                    <button data-customer-id="@customers.Id" class="btn btn-link js-delete">Delete</button>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+@section scripts
+{ 
+    <script>
+        $(document).ready(function () {
+            $("#customers").on("click", ".js-delete",function () {
+                var button = $(this);
+                bootbox.confirm("Delete this customer ?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/customers/" + button.attr("data-customer-id"),
+                            method: "DELETE",
+                            success: function () {
+                                button.parents("tr").remove();
+                            }
+                        })
+                    }
+                })
+            });
+        });
+    </script>
+}
