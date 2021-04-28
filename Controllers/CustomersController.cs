@@ -52,14 +52,31 @@ namespace Vidly.Controllers
             }
             else
             {
-                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44318/api/customers/");
+
+                    //HTTP POST
+                    var putTask = client.PutAsJsonAsync<Customer>(customer.Id.ToString(), customer);
+                    putTask.Wait();
+
+                    var result = putTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
+
+                    return Content("something went wrong");
+                }
+
+                /*var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
                 customerInDb.Name = customer.Name;
                 customerInDb.BirthDate = customer.BirthDate;
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
-                customerInDb.isSubscribeToNewsLetter = customer.isSubscribeToNewsLetter;
+                customerInDb.isSubscribeToNewsLetter = customer.isSubscribeToNewsLetter;*/
             }
 
-            _context.SaveChanges();
+            //_context.SaveChanges();
 
             return RedirectToAction("Index", "Customers");
         }
